@@ -1,8 +1,7 @@
 <template>
   <div>
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+     
     </div>
     <router-view/>
   </div>
@@ -10,6 +9,8 @@
 </template>
 
 <style lang="scss">
+@import "./assets/style/base.scss";
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -18,16 +19,26 @@
   color: #2c3e50;
 }
 
-#nav {
-  padding: 30px;
+// #nav {
+//   width: 500px;
+//   @extend %clearfix;
+//   background-color: #42b983;
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+//   .box{
+//     width: 100px;
+//     height: 100px;
+//     margin: 0;
+//     float: left;
+//     background-color: aqua;
+//   }
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
+//   a {
+//     font-weight: bold;
+//     color: #2c3e50;
+
+//     &.router-link-exact-active {
+//       color: #42b983;
+//     }
+//   }
+// }
 </style>
