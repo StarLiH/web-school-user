@@ -1,12 +1,23 @@
 <template>
   <div>
     <div id="nav">
-     
+      <home></home>
     </div>
     <router-view/>
   </div>
   
 </template>
+
+<script>
+import Home from 'views/HomePage/Home.vue'
+export default {
+  name:'App',
+  components: {
+    Home
+  }
+  
+}
+</script>
 
 <style lang="scss">
 @import "./assets/style/base.scss";
@@ -15,7 +26,6 @@
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
 }
 
