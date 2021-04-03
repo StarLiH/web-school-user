@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import Home from 'views/HomePage/Home.vue'
+import Home from 'views/HomePage/Home'
 export default {
   name:'App',
   components: {
