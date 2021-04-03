@@ -1,5 +1,5 @@
 @import"./reset.scss";
-%clearfix {
+.clearfix {
   *zoom: 1;
   &:before, &:after {
     content: " ";
@@ -8,4 +8,8 @@
   &:after {
     clear: both;
   }
+}
+
+#app{
+  min-width: 1200px;
 }

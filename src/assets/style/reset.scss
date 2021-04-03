@@ -30,6 +30,11 @@ input {
   line-height: 1.5em;
   height: 1.5em;
   display: block;
+  outline: none;
+}
+
+button{
+  outline: none;
 }
 
 $master-color: rgba(4, 19, 36, 1); // 主色调
