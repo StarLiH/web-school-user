@@ -25,7 +25,7 @@
     <ul class="login">
       <li>
         <a href="#">
-          登录 / 注册
+          <router-link to="/login">登录 / 注册</router-link>
         </a>
       </li>
     </ul>

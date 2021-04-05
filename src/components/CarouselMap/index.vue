@@ -1,9 +1,7 @@
 <template>
   <div id="carouselmap">
     <a class="left-a" href="javascript:;"><i class="el-icon-arrow-left"></i></a>
-    <a class="right-a" href="javascript:;"
-      ><i class="el-icon-arrow-right"></i
-    ></a>
+    <a class="right-a" href="javascript:;"><i class="el-icon-arrow-right"></i></a>
     <img src="@/assets/img/0001.jpeg" alt="轮播图" />
     <div class="map-spot">
       <!-- 动态创建a -->
