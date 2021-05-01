@@ -11,7 +11,7 @@ export default {
   },
   //教师注册
   teachregister(teachInfo){
-    return request(teachInfo)({
+    return request ({
       url:'/xiyueservice/teachers/register',
       method:'post',
       data:teachInfo

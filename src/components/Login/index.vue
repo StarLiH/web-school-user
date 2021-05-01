@@ -167,17 +167,17 @@ export default {
       &&this.errorphone.length==0
       &&this.errorpassword.length==0
       &&this.errorcode.length==0){
-        login.studregister(this.user)
+        login.studlogin(this.user)
         .then(response=>{
           //获取学生登录token,并且放入cookie里面(参数分别为：名称，值，作用域)
-          cookie.set("stu_token",response.data.data.token,{domain:'localhost'})
+          cookie.set("user_token",response.data.data.token,{domain:'localhost'})
           //在request里面创建拦截器
           //调用接口获取用户信息
           login.studentInfo()
           .then(response=>{
             this.loginInfo=response.data.data.studentsInfo
             //获取返回的用户信息，放入cookie
-            cookie.set('stu_info',this.loginInfo,{domain:'localhost'})
+            cookie.set('user_info',this.loginInfo,{domain:'localhost'})
             if(!this.loginInfo){
               ElMessage.error('账号或者密码错误');
             }else{
@@ -195,7 +195,29 @@ export default {
       &&this.errorphone.length==0
       &&this.errorpassword.length==0
       &&this.errorcode.length==0){
-        alert("教师")
+        login.teachlogin(this.user)
+        .then(response=>{
+          //获取教师登录token,并且放入cookie里面(参数分别为：名称，值，作用域)
+          cookie.set("user_token",response.data.data.token,{domain:'localhost'})
+          //在request里面创建拦截器
+          //调用接口获取用户信息
+          login.teacherInfo()
+          .then(response=>{
+            this.loginInfo=response.data.data.teachersInfo
+            //获取返回的用户信息，放入cookie
+            cookie.set('user_info',this.loginInfo,{domain:'localhost'})
+            if(!this.loginInfo){
+              ElMessage.error('账号或者密码错误');
+            }else{
+              ElMessage.success({
+                message:'登录成功',
+                type:'success'
+              })
+              //跳转到首页
+              window.location.href='/'
+            }
+          })
+        })
       }else{
         ElMessage.error('错误');
       }

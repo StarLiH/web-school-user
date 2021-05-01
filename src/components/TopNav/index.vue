@@ -65,7 +65,7 @@ export default {
   methods: {
     //从cookie获取用户信息
     showInfo() {
-      let showUser = cookie.get("stu_info");
+      let showUser = cookie.get("user_info");
       //整个是一个字符串，需要转换为对象
       if (showUser) {
         this.logininfo = JSON.parse(showUser);
@@ -80,8 +80,8 @@ export default {
       })
         .then(() => {
           //清空cookie
-          cookie.set("stu_token", "", { domain: "localhost" });
-          cookie.set("stu_info", "", { domain: "localhost" });
+          cookie.set("user_token", "", { domain: "localhost" });
+          cookie.set("user_info", "", { domain: "localhost" });
           //跳转首页
           window.location.href = "/";
           this.$message({

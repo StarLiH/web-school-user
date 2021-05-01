@@ -11,8 +11,8 @@ const service = axios.create({
 service.interceptors.request.use(
   config => {
     //判断cookie里面是否存在token
-    if(cookie.get('stu_token')){
-      config.headers['token']=cookie.get('stu_token');
+    if(cookie.get('user_token')){
+      config.headers['token']=cookie.get('user_token');
     }
     return config
   },
