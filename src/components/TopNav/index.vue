@@ -3,13 +3,13 @@
     <!-- 左侧导航 -->
     <ul class="left-nav clearfix">
       <li>
-        <a href="">首页</a>
+        <a href="javascript:;">首页</a>
       </li>
       <li>
-        <a href="">课程</a>
+        <a href="javascript:;">课程</a>
       </li>
       <li>
-        <a href="">教师</a>
+        <a href="javascript:;">教师</a>
       </li>
     </ul>
     <!-- 中间搜索框 -->
@@ -23,29 +23,65 @@
     </div>
     <!-- 右侧登录注册以及个人中心 -->
     <ul class="login">
-      <li>
+      <li v-if="!logininfo.id">
         <a href="#">
           <router-link to="/login">登录 / 注册</router-link>
         </a>
+      </li>
+      <li class="ucenter clearfix" v-if="logininfo.id">
+        <a href="/usercenter">
+          <p><img :src="logininfo.headportrait" alt="头像"></p>
+          <span>{{logininfo.nickname}}</span>
+        </a>
+        <a href="javascript:;">我的消息</a>
+        <a href="javascript:;">退出登录</a>
       </li>
     </ul>
   </div>
 </template>
 
 <script>
+import cookie from 'js-cookie'
 export default {
-  name:'TopNav'
+  name:'TopNav',
+  data(){
+    return{
+      //登录数据
+      token:'',
+      logininfo:{
+        id:'',
+        age:'',
+        headportrait:'',
+        nickname:'',
+        sex:'',
+        phonenumber:''
+      }
+    }
+  },
+  created(){
+    //页面渲染之前执行
+    this.showInfo()
+  },
+  methods:{
+    //从cookie获取用户信息
+    showInfo(){
+      let showUser = cookie.get('stu_info')
+      //整个是一个字符串，需要转换为对象
+      if(showUser){
+        this.logininfo=JSON.parse(showUser)
+      }
+    }
+  }
 }
 </script>
 
 <style lang="scss">
   #top-nav{
     min-width: 1200px;
-    line-height: 50px;
+    line-height: 70px;
     background-color: rgb(228, 228, 228);
     position: relative;
     box-shadow: 5px 5px 10px #c4c4c4;
-
     .left-nav{
       margin-left: 30px;
       float: left;
@@ -56,6 +92,9 @@ export default {
       a{
         color: black;
       }
+      a:hover{
+        color: rgb(74, 195, 252);
+      }
     }
     .search{
       position: absolute;
@@ -64,6 +103,7 @@ export default {
       transform: translate(-50%,-50%);
       input{
         padding: 5px;
+        padding-left: 10px;
         height: 20px;
         border: 1px solid rgb(131, 131, 131);
         border-right: none;
@@ -89,6 +129,30 @@ export default {
       margin-right: 100px;
       a{
         color: black;
+        display: block;
+        float: left;
+        line-height: 70px;
+        margin: 0 10px;
+      }
+      a:hover{
+        color: rgb(89, 200, 252);
+      }
+      .ucenter{
+        p{
+          float: left;
+          height: 65px;
+          width: 65px;
+          margin-top: 1px;
+          margin-right: 8px;
+          background-color: red;
+          border-radius: 50%;
+          img{
+            height: 65px;
+            width: 65px;
+            display: block;
+            border-radius: 50%;
+          }
+        }
       }
     }
   }

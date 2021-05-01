@@ -2,7 +2,7 @@ export function Map() {
   let index = 0;//全局索引
   let timer = {};//定时器
   //获取标签
-  let imgA = document.getElementsByTagName('img')[0];
+  let imgA = document.getElementsByClassName('car')[0];
   let leftA = document.getElementsByClassName('left-a')[0];
   let rightA = document.getElementsByClassName('right-a')[0];
   let spot = document.getElementsByClassName('map-spot')[0];
