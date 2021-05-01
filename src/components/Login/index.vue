@@ -44,7 +44,7 @@
         </label>
       </div>
     </form>
-    <button @click="regbtn()">登录</button>
+    <button :plain="true" @click="regbtn()">登录</button>
     <router-link to="/register">
       <a class="ls" href="javascript:;">还没有账号？注册</a></router-link
     >
@@ -55,6 +55,7 @@
 import CanvasCode from "./CanvasCode.vue";
 import login from '@/api/login'
 import cookie from 'js-cookie'
+import { ElMessage } from 'element-plus'
 export default {
   name: "login",
   data() {
@@ -152,12 +153,15 @@ export default {
       if(this.user.phonenumber==''
       ||this.user.password==''
       ||this.code==''){
-        alert('请输入信息')
+        ElMessage.warning({
+          message: '信息不完全',
+          type: 'warning'
+        })
       }else
       if(this.errorphone.length!=0
       ||this.errorpassword.length!=0
       ||this.errorcode.length!=0){
-        alert("信息有误")
+        ElMessage.error('信息有误');
       }else
       if(this.radValue==1
       &&this.errorphone.length==0
@@ -174,8 +178,16 @@ export default {
             this.loginInfo=response.data.data.studentsInfo
             //获取返回的用户信息，放入cookie
             cookie.set('stu_info',this.loginInfo,{domain:'localhost'})
-            //跳转到首页
-            window.location.href='/'
+            if(!this.loginInfo){
+              ElMessage.error('账号或者密码错误');
+            }else{
+              ElMessage.success({
+                message:'登录成功',
+                type:'success'
+              })
+              //跳转到首页
+              window.location.href='/'
+            }
           })
         })
       }else
@@ -185,7 +197,7 @@ export default {
       &&this.errorcode.length==0){
         alert("教师")
       }else{
-        alert("error")
+        ElMessage.error('错误');
       }
     }
   },

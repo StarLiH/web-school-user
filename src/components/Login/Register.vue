@@ -72,7 +72,7 @@
         </label>
       </div>
     </form>
-    <button @click="registerbtn()">注册</button>
+    <button :plain="true" @click="registerbtn()">注册</button>
     <router-link to="login">
       <a class="vs" href="javascript:;">已有账号，去登录</a>
     </router-link>
@@ -83,6 +83,7 @@
 import CanvasCode from "./CanvasCode.vue";
 //引入注册请求
 import register from "@/api/register";
+import { ElMessage } from 'element-plus'
 export default {
   name: "Register",
   data() {
@@ -211,14 +212,20 @@ export default {
       let passa = this.userinfo.password
       let passb = this.userinfo.passb
       if(name==''||phone==''||passa==''||passb==''||this.code==''){
-        alert('信息不完全')
+        ElMessage.warning({
+          message: '信息不完全',
+          type: 'warning'
+        })
       }else 
       if(this.errorname.length!=0 
       || this.errorphone.length!=0 
       || this.errorpassa.length!=0
       || this.errorpassb.length!=0
       || this.errorcode.length!=0){
-        alert("信息有误")
+        ElMessage.warning({
+          message: '信息有误',
+          type: 'warning'
+        })
       }else
       if(this.radioValue == 1 
       && this.errorname.length==0 
@@ -246,7 +253,7 @@ export default {
           this.$router.push({path:'/login'})
         })
       }else{
-        alert("error")
+        ElMessage.error('错误');
       }
     },
   },
