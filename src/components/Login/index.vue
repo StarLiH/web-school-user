@@ -1,5 +1,5 @@
 <template>
-  <div id="join">
+  <div id="join-in">
     <form action="#">
       <div class="user">
         <input
@@ -45,7 +45,7 @@
       </div>
     </form>
     <button :plain="true" @click="regbtn()">登录</button>
-    <router-link to="/register">
+    <router-link to="/join/register">
       <a class="ls" href="javascript:;">还没有账号？注册</a></router-link
     >
   </div>
@@ -178,8 +178,10 @@ export default {
             this.loginInfo=response.data.data.studentsInfo
             //获取返回的用户信息，放入cookie
             cookie.set('user_info',this.loginInfo,{domain:'localhost'})
+            //身份判断放入cook
+            cookie.set('radio',this.radValue,{domain:'localhost'})
             if(!this.loginInfo){
-              ElMessage.error('账号或者密码错误');
+              ElMessage.error('账号、密码或者身份错误');
             }else{
               ElMessage.success({
                 message:'登录成功',
@@ -206,6 +208,8 @@ export default {
             this.loginInfo=response.data.data.teachersInfo
             //获取返回的用户信息，放入cookie
             cookie.set('user_info',this.loginInfo,{domain:'localhost'})
+            //身份判断放入cook
+            cookie.set('radio',this.radValue,{domain:'localhost'})
             if(!this.loginInfo){
               ElMessage.error('账号或者密码错误');
             }else{
@@ -235,11 +239,11 @@ export default {
 };
 </script>
 
-<style lang="scss">
-#join {
+<style lang="scss" scoped>
+#join-in {
   height: 500px;
   overflow: hidden;
-  background-color: rgb(157, 235, 245);
+  background-color: rgba(144, 201, 248, 0.712);
   .msg {
     position: absolute;
     left: 70px;

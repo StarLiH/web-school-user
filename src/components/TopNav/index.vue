@@ -3,13 +3,13 @@
     <!-- 左侧导航 -->
     <ul class="left-nav clearfix">
       <li>
-        <a href="javascript:;">首页</a>
+        <router-link to="/">首页</router-link>
       </li>
       <li>
-        <a href="javascript:;">课程</a>
+        <router-link to="/courses">全部课程</router-link>
       </li>
       <li>
-        <a href="javascript:;">教师</a>
+        <router-link to="/teachers">全部教师</router-link>
       </li>
     </ul>
     <!-- 中间搜索框 -->
@@ -25,11 +25,19 @@
     <ul class="login">
       <li v-if="!logininfo.id">
         <a href="#">
-          <router-link to="/login">登录 / 注册</router-link>
+          <router-link to="/join/login">登录 / 注册</router-link>
         </a>
       </li>
-      <li class="ucenter clearfix" v-if="logininfo.id">
-        <a href="/usercenter">
+      <li class="ucenter clearfix" v-if="logininfo.id&&radioId==1">
+        <a href="/studentcenter/msg" target="_blank">
+          <p><img :src="logininfo.headportrait" alt="头像" /></p>
+          <span>{{ logininfo.nickname }}</span>
+        </a>
+        <a href="javascript:;">我的消息</a>
+        <a href="javascript:void(0);" @click="signOut()">退出登录</a>
+      </li>
+      <li class="ucenter clearfix" v-if="logininfo.id&&radioId==0">
+        <a href="/teachercenter/msg" target="_blank">
           <p><img :src="logininfo.headportrait" alt="头像" /></p>
           <span>{{ logininfo.nickname }}</span>
         </a>
@@ -56,6 +64,8 @@ export default {
         sex: "",
         phonenumber: "",
       },
+      //身份判断
+      radioId:''
     };
   },
   created() {
@@ -66,6 +76,7 @@ export default {
     //从cookie获取用户信息
     showInfo() {
       let showUser = cookie.get("user_info");
+      this.radioId = cookie.get("radio")
       //整个是一个字符串，需要转换为对象
       if (showUser) {
         this.logininfo = JSON.parse(showUser);
@@ -82,6 +93,7 @@ export default {
           //清空cookie
           cookie.set("user_token", "", { domain: "localhost" });
           cookie.set("user_info", "", { domain: "localhost" });
+          cookie.set('radio',"",{domain:'localhost'})
           //跳转首页
           window.location.href = "/";
           this.$message({
@@ -100,13 +112,13 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 #top-nav {
   min-width: 1200px;
   line-height: 70px;
-  background-color: rgb(252, 252, 252);
+  background-color: rgba(252, 252, 252,0.6);
   position: relative;
-  box-shadow: 5px 5px 10px #c4c4c4;
+  box-shadow: 3px 3px 7px #c4c4c4;
   .left-nav {
     margin-left: 30px;
     float: left;
@@ -115,10 +127,10 @@ export default {
       float: left;
     }
     a {
-      color: black;
+      color: rgb(14, 13, 13);
     }
     a:hover {
-      color: rgb(74, 195, 252);
+      color: rgb(74, 187, 252);
     }
   }
   .search {

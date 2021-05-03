@@ -73,7 +73,7 @@
       </div>
     </form>
     <button :plain="true" @click="registerbtn()">注册</button>
-    <router-link to="login">
+    <router-link to="/join/login">
       <a class="vs" href="javascript:;">已有账号，去登录</a>
     </router-link>
   </div>
@@ -236,7 +236,10 @@ export default {
         register.studregister(this.userinfo)
         .then(response =>{
           //注册成功以及跳转登录页面
-          alert("注册成功")
+          ElMessage.success({
+            message:'注册成功',
+            type:'success'
+          })
           this.$router.push({path:'/login'})
         })
       }else
@@ -249,7 +252,10 @@ export default {
         register.teachregister(this.userinfo)
         .then(response=>{
           //注册成功以及跳转
-          alert("注册成功")
+          ElMessage.success({
+            message:'注册成功',
+            type:'success'
+          })
           this.$router.push({path:'/login'})
         })
       }else{
@@ -271,11 +277,11 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 #register {
   height: 500px;
   overflow: hidden;
-  background-color: rgb(179, 250, 255);
+  background-color: rgba(158, 210, 253, 0.671);
   .msg {
     position: absolute;
     left: 80px;
