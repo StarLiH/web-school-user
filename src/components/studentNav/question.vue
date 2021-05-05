@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name:'question'
+  name:'stuques'
 }
 </script>
 

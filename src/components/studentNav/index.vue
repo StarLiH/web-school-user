@@ -4,22 +4,22 @@
       <li>个人中心</li>
       <p class="stu-nav-line"></p>
       <li>
-        <router-link to="/studentcenter/msg">个人资料</router-link>
+        <router-link to="stumsg">个人资料</router-link>
       </li>
       <li>
-        <router-link to="/studentcenter/avatar">我的头像</router-link>
+        <router-link to="stuavatar">我的头像</router-link>
       </li>
       <li>
-        <router-link to="/studentcenter/safe">账号安全</router-link>
+        <router-link to="stusafe">账号安全</router-link>
       </li>
       <li>
-        <router-link to="/studentcenter/course">我的课程</router-link>
+        <router-link to="stucourse">我的课程</router-link>
       </li>
       <li>
-        <router-link to="/studentcenter/exam">我的试题</router-link>
+        <router-link to="stuexam">我的试题</router-link>
       </li>
       <li>
-        <router-link to="/studentcenter/question">我的问答</router-link>
+        <router-link to="stuques">我的问答</router-link>
       </li>
     </ul>
   </div>

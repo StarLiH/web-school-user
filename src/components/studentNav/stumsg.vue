@@ -1,6 +1,6 @@
 <template>
-  <div id="stu-avat">
-    <p class="mm">我的头像</p>
+  <div id="stu-msg">
+    <p class="mm">我的资料</p>
     <p class="stu-msg-line"></p>
   </div>
 </template>
@@ -8,12 +8,12 @@
 
 <script>
 export default {
-  name:'avatar'
+  name:'stumsg'
 }
 </script>
 
 <style lang="scss" scoped>
-  #stu-avat{
+  #stu-msg{
     position: absolute;
     top: 20px;
     left: 390px;

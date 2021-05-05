@@ -29,7 +29,7 @@
         </a>
       </li>
       <li class="ucenter clearfix" v-if="logininfo.id&&radioId==1">
-        <a href="/studentcenter/msg" target="_blank">
+        <a href="/studentcenter" target="_blank">
           <p><img :src="logininfo.headportrait" alt="头像" /></p>
           <span>{{ logininfo.nickname }}</span>
         </a>

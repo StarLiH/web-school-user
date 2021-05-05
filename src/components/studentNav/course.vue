@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name:'course'
+  name:'stucourse'
 }
 </script>
 

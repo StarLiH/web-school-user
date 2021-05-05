@@ -7,12 +7,6 @@
         <router-link to="/teachercenter/msg">个人资料</router-link>
       </li>
       <li>
-        <router-link to="/teachercenter/avatar">我的头像</router-link>
-      </li>
-      <li>
-        <router-link to="/teachercenter/safe">账号安全</router-link>
-      </li>
-      <li>
         <router-link to="/teachercenter/course">课程发布</router-link>
       </li>
       <li>
