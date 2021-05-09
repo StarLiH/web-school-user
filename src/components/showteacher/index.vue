@@ -7,7 +7,7 @@
         <li class="tea-li">
           <a href="#">
             <img
-              src="https://lht-100.oss-cn-beijing.aliyuncs.com/my_school/picture/head_portrait/87878859_p2.jpg?versionId=CAEQDhiBgMDmo5SwyBciIDYzNDQxZDdjYzMzNDRiNjhhN2Y0OGFiNmM4OGEwYmJj"
+              src="https://lht-100.oss-cn-beijing.aliyuncs.com/my_school/picture/head_portrait/87878859_p4.jpg"
               alt="头像"
             />
           </a>
@@ -21,7 +21,7 @@
         <li class="tea-li">
           <a href="#">
             <img
-              src="https://lht-100.oss-cn-beijing.aliyuncs.com/my_school/picture/head_portrait/87878859_p2.jpg?versionId=CAEQDhiBgMDmo5SwyBciIDYzNDQxZDdjYzMzNDRiNjhhN2Y0OGFiNmM4OGEwYmJj"
+              src="https://lht-100.oss-cn-beijing.aliyuncs.com/my_school/picture/head_portrait/87878859_p4.jpg"
               alt="头像"
             />
           </a>
@@ -35,7 +35,7 @@
         <li class="tea-li">
           <a href="#">
             <img
-              src="https://lht-100.oss-cn-beijing.aliyuncs.com/my_school/picture/head_portrait/87878859_p2.jpg?versionId=CAEQDhiBgMDmo5SwyBciIDYzNDQxZDdjYzMzNDRiNjhhN2Y0OGFiNmM4OGEwYmJj"
+              src="https://lht-100.oss-cn-beijing.aliyuncs.com/my_school/picture/head_portrait/87878859_p4.jpg"
               alt="头像"
             />
           </a>
@@ -49,7 +49,7 @@
         <li class="tea-li">
           <a href="#">
             <img
-              src="https://lht-100.oss-cn-beijing.aliyuncs.com/my_school/picture/head_portrait/87878859_p2.jpg?versionId=CAEQDhiBgMDmo5SwyBciIDYzNDQxZDdjYzMzNDRiNjhhN2Y0OGFiNmM4OGEwYmJj"
+              src="https://lht-100.oss-cn-beijing.aliyuncs.com/my_school/picture/head_portrait/87878859_p4.jpg"
               alt="头像"
             />
           </a>

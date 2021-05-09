@@ -7,10 +7,13 @@
         <router-link to="/teachercenter/msg">个人资料</router-link>
       </li>
       <li>
-        <router-link to="/teachercenter/course">课程发布</router-link>
+        <router-link to="/teachercenter/course">大纲列表</router-link>
       </li>
       <li>
-        <router-link to="/teachercenter/manage">课程管理</router-link>
+        <router-link to="/teachercenter/administer">课程管理</router-link>
+      </li>
+      <li>
+        <router-link to="/teachercenter/manage/info">课程发布</router-link>
       </li>
       <li>
         <router-link to="/teachercenter/exam">试题发布</router-link>

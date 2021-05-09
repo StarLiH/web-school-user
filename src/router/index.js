@@ -45,18 +45,13 @@ const routes = [
   {
     path: '/studentcenter',
     name: 'student',
-    redirect:'/studentcenter/stumsg',
+    redirect: '/studentcenter/stumsg',
     component: () => import('views/user/student'),
     children: [
       {
         path: 'stumsg',
         name: 'stumsg',
         component: () => import('components/studentNav/stumsg')
-      },
-      {
-        path: 'stuavatar',
-        name: 'stuavatar',
-        component: () => import('components/studentNav/stuavatar')
       },
       {
         path: 'stucourse',
@@ -91,9 +86,39 @@ const routes = [
         component: () => import('components/teacherNav/course')
       },
       {
+        path: '/teachercenter/administer',
+        name: 'administer',
+        component: () => import('components/teacherNav/administer')
+      },
+      {
         path: '/teachercenter/manage',
         name: 'manage',
-        component: () => import('components/teacherNav/manage')
+        component: () => import('components/teacherNav/manage'),
+        children: [
+          {
+            path: '/teachercenter/manage/info',
+            name: 'info',
+            component: () => import('components/course/info')
+          },
+          {
+            path: '/teachercenter/manage/info/:id',
+            name: 'message',
+            component: () => import('components/course/info'),
+            hidden: true
+          },
+          {
+            path: '/teachercenter/manage/chapter/:id',
+            name: 'chapter',
+            component: () => import('components/course/chapter'),
+            hidden: true
+          },
+          {
+            path: '/teachercenter/manage/publish/:id',
+            name: 'publish',
+            component: () => import('components/course/publish'),
+            hidden: true
+          }
+        ]
       },
       {
         path: '/teachercenter/exam',

@@ -2,7 +2,7 @@
   <div id="carouselmap">
     <a class="left-a" href="javascript:;"><i class="el-icon-arrow-left"></i></a>
     <a class="right-a" href="javascript:;"><i class="el-icon-arrow-right"></i></a>
-    <img class="car" src="@/assets/img/0001.jpeg" alt="轮播图" />
+    <img class="car" :src="oneBanner" alt="轮播图" />
     <div class="map-spot">
       <!-- 动态创建a -->
     </div>
@@ -11,15 +11,45 @@
 
 <script>
 import { Map } from "./map.js";
+import banner from "api/banner"
 export default {
   name: "CarouselMap",
   data() {
     return {
       Map,
+      bannerAllList:[],
+      oneBanner:''
     };
   },
+  created(){
+    
+    this.getAllBanner()
+  },
+  methods:{
+    //查询所有banner数据
+    getAllBanner(){
+      banner.getBannerList()
+      .then(response=>{
+        //接收查询的banner数据
+        let allBanner = response.data.data.list
+        //isDeleted
+        for(let i=0;i<allBanner.length;i++){
+          //作一个判断，如果没有被禁用则加入到前端数据中
+          if(allBanner[i].isDeleted == 0){
+            this.bannerAllList.push(allBanner[i].imageurl)//
+          }
+        }
+        this.oneBanner = this.bannerAllList[0]
+      })
+    },
+    //轮播图
+    bannerMap(){
+      //let b = new Promise
+    }
+  },
   mounted() {
-    this.Map();
+    //
+    this.bannerMap()
   },
 };
 </script>

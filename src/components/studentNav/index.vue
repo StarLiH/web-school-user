@@ -7,12 +7,6 @@
         <router-link to="stumsg">个人资料</router-link>
       </li>
       <li>
-        <router-link to="stuavatar">我的头像</router-link>
-      </li>
-      <li>
-        <router-link to="stusafe">账号安全</router-link>
-      </li>
-      <li>
         <router-link to="stucourse">我的课程</router-link>
       </li>
       <li>
