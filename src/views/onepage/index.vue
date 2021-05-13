@@ -8,22 +8,22 @@
 
 
 <script>
-import CarouselMap from 'components/CarouselMap/index.vue'
-import showSubject from 'components/showsubject/index.vue'
-import showTeacher from 'components/showteacher/index.vue'
+import CarouselMap from "components/CarouselMap/index.vue";
+import showSubject from "components/showsubject/index.vue";
+import showTeacher from "components/showteacher/index.vue";
 export default {
-  name:'onepage',
-  components:{
+  name: "onepage",
+  components: {
     CarouselMap,
     showSubject,
-    showTeacher
-  }
-}
+    showTeacher,
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-  #one-page{
-    position: relative;
-    height: 1330px;
-  }
+#one-page {
+  position: relative;
+  height: 1330px;
+}
 </style>

@@ -8,4 +8,10 @@ export default {
       method: 'get',
     })
   },
+  getIndexList(){
+    return request ({
+      url: '/xiyuecourse/indexFront/index',
+      method: 'get',
+    })
+  },
 }

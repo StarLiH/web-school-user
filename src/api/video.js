@@ -38,4 +38,11 @@ export default {
       method: 'delete',
     })
   },
+  //获取播放凭证
+  getViodeAuth(id) {
+    return request({
+      url: '/xiyuevod/video/getVideoAuth/'+id,
+      method: 'get',
+    })
+  },
 }

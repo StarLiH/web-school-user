@@ -6,7 +6,7 @@ export default {
     return request ({
       url: '/xiyueservice/students/login',
       method: 'post',
-      data: studInfo
+      data: studInfo,
     })
   },
   //学生token信息

@@ -33,7 +33,6 @@
           <p><img :src="logininfo.headportrait" alt="头像" /></p>
           <span>{{ logininfo.nickname }}</span>
         </a>
-        <a href="javascript:;">我的消息</a>
         <a href="javascript:void(0);" @click="signOut()">退出登录</a>
       </li>
       <li class="ucenter clearfix" v-if="logininfo.id&&radioId==0">
@@ -41,7 +40,6 @@
           <p><img :src="logininfo.headportrait" alt="头像" /></p>
           <span>{{ logininfo.nickname }}</span>
         </a>
-        <a href="javascript:;">我的消息</a>
         <a href="javascript:void(0);" @click="signOut()">退出登录</a>
       </li>
     </ul>

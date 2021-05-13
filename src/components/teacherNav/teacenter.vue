@@ -40,7 +40,7 @@
         </label>
       </div>
       <div class="msg-next">
-        <el-button type="primary">保存</el-button>
+        <el-button type="primary" @click="saveMyInfo()">保存</el-button>
       </div>
     </el-form>
   </div>
@@ -49,6 +49,9 @@
 
 <script>
 import cookie from "js-cookie";
+import user from "api/user";
+import login from "api/login";
+import { ElMessage } from "element-plus";
 export default {
   name: "msg",
   data() {
@@ -65,6 +68,7 @@ export default {
         { label: "男", id: 0 },
         { label: "女", id: 1 },
       ],
+      loginInfo:''
     };
   },
   created() {
@@ -75,15 +79,28 @@ export default {
     //初始显示教师信息
     teacherMsg() {
       let showteacher = cookie.get("user_info");
-      if (showteacher) {
-        this.teacher = JSON.parse(showteacher);
-      }
+      this.teacher = JSON.parse(showteacher);
       this.radValue=this.teacher.sex
-      console.log(this.teacher.headportrait)
+      //console.log(this.teacher.headportrait)
     },
-    handleAvatarSuccess(response) {
+    handleAvatarSuccess(res) {
       //上传之后
-      this.teacher.avatar = response.data.url;
+      this.teacher.headportrait = res.data.url;
+    },
+    saveMyInfo() {
+      this.teacher.sex = this.radValue
+      user.updateTeacher(this.teacher).then((response) => {
+        login.teacherInfo().then((response) => {
+          this.loginInfo = response.data.data.teachersInfo;
+          //获取返回的用户信息，放入cookie
+          cookie.set("user_info", this.loginInfo, { domain: "localhost" });
+          //身份判断放入cook
+          ElMessage.success({
+            message: "修改成功",
+            type: "success",
+          });
+        });
+      });
     },
   },
 };

@@ -1,5 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from 'views/HomePage/Home'
+import cookie from "js-cookie"
+import { ElMessage } from 'element-plus'
+
 
 const routes = [
   {
@@ -14,16 +17,83 @@ const routes = [
         component: () => import('views/onepage/index')
       },
       {
-        path: 'courses',
-        name: 'courses',
-        component: () => import('views/courses/index')
+        path: '/courses',
+        name: '/courses',
+        component: () => import('views/courses/index'),
+        beforeEnter: (to, from, next) => {
+          let user = cookie.get("user_info")
+          //console.log(user === undefined)
+          if (user === undefined) {
+            ElMessage.warning({
+              message: '请先登录~',
+              type: 'warning'
+            });
+            next('/join/login')
+          } else {
+            next()
+          }
+        }
       },
       {
-        path: 'teachers',
+        path: '/courses/:id',
+        name: 'coursesId',
+        component: () => import('views/courses/_id'),
+        beforeEnter: (to, from, next) => {
+          let user = cookie.get("user_info")
+          //console.log(user === undefined)
+          if (user === undefined) {
+            ElMessage.warning({
+              message: '请先登录~',
+              type: 'warning'
+            });
+            next('/join/login')
+          } else {
+            next()
+          }
+        }
+      },
+      {
+        path: '/teachers',
         name: 'teachers',
-        component: () => import('views/teachers/index')
+        component: () => import('views/teachers/index'),
+        beforeEnter: (to, from, next) => {
+          let user = cookie.get("user_info")
+          //console.log(user === undefined)
+          if (user === undefined) {
+            ElMessage.warning({
+              message: '请先登录~',
+              type: 'warning'
+            });
+            next('/join/login')
+          } else {
+            next()
+          }
+        }
+      },
+      {
+        path: '/teachers/:id',
+        name: 'teachersId',
+        component: () => import('views/teachers/_id'),
+        beforeEnter: (to, from, next) => {
+          let user = cookie.get("user_info")
+          //console.log(user === undefined)
+          if (user === undefined) {
+            ElMessage.warning({
+              message: '请先登录~',
+              type: 'warning'
+            });
+            next('/join/login')
+          } else {
+            next()
+          }
+        }
       }
     ]
+  },
+  {
+    path: '/player/:vid',
+    name: 'video',
+    component: () => import('views/video/_vid'),
   },
   {
     path: '/join',
@@ -62,14 +132,10 @@ const routes = [
         path: 'stuexam',
         name: 'stuexam',
         component: () => import('components/studentNav/exam')
-      },
-      {
-        path: 'stuques',
-        name: 'stuques',
-        component: () => import('components/studentNav/question')
       }
     ]
   },
+
   {
     path: '/teachercenter',
     name: 'teachercenter',
@@ -134,16 +200,6 @@ const routes = [
         path: '/teachercenter/collect',
         name: 'collect',
         component: () => import('components/teacherNav/collect')
-      },
-      {
-        path: '/teachercenter/record',
-        name: 'record',
-        component: () => import('components/teacherNav/record')
-      },
-      {
-        path: '/teachercenter/question',
-        name: 'question',
-        component: () => import('components/teacherNav/question')
       }
     ]
   }
@@ -153,6 +209,17 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
+
+// router.beforeEach((to, from, next) => {
+//   let showUser = cookie.get("user_info");
+//   //整个是一个字符串，需要转换为对象
+//   if (to.path != '/join/login' && showUser == '') {
+//     alert('您还没有登录，请先登录');
+//     next('/join/login');
+//   } else {
+//     next();
+//   }
+// })
 
 export default router
 

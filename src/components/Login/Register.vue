@@ -240,7 +240,7 @@ export default {
             message:'注册成功',
             type:'success'
           })
-          this.$router.push({path:'/login'})
+          this.$router.push({path:'/join/login'})
         })
       }else
       if(this.radioValue == 0 

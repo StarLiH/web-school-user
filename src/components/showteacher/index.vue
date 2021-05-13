@@ -4,60 +4,26 @@
     <p class="tea-line"></p>
     <div class="show-tea">
       <ul class="clearfix">
-        <li class="tea-li">
-          <a href="#">
-            <img
-              src="https://lht-100.oss-cn-beijing.aliyuncs.com/my_school/picture/head_portrait/87878859_p4.jpg"
-              alt="头像"
-            />
+        <li class="tea-li" v-for="(teacher, aa) in teacherList">
+          <a
+            :href="'/teachers/' + teacher.id"
+            :title="teacher.name"
+            target="_blank"
+          >
+            <img :src="teacher.headportrait" alt="头像" />
           </a>
-          <p class="tea-nam"><a href="#">教师xxx</a></p>
+          <p class="tea-nam">
+            <a
+              :href="'/teachers/' + teacher.id"
+              :title="teacher.name"
+              target="_blank"
+              >{{ teacher.name }}</a
+            >
+          </p>
           <p class="tea-line"></p>
           <div class="tea-msg">
-            <p>教师级别：高级教师</p>
-            <span> 教师介绍：是xxx学院教师，擅长xxxx教学 现在xxx机构教学 </span>
-          </div>
-        </li>
-        <li class="tea-li">
-          <a href="#">
-            <img
-              src="https://lht-100.oss-cn-beijing.aliyuncs.com/my_school/picture/head_portrait/87878859_p4.jpg"
-              alt="头像"
-            />
-          </a>
-          <p class="tea-nam"><a href="#">教师xxx</a></p>
-          <p class="tea-line"></p>
-          <div class="tea-msg">
-            <p>教师级别：高级教师</p>
-            <span> 教师介绍：是xxx学院教师，擅长xxxx教学 现在xxx机构教学 </span>
-          </div>
-        </li>
-        <li class="tea-li">
-          <a href="#">
-            <img
-              src="https://lht-100.oss-cn-beijing.aliyuncs.com/my_school/picture/head_portrait/87878859_p4.jpg"
-              alt="头像"
-            />
-          </a>
-          <p class="tea-nam"><a href="#">教师xxx</a></p>
-          <p class="tea-line"></p>
-          <div class="tea-msg">
-            <p>教师级别：高级教师</p>
-            <span> 教师介绍：是xxx学院教师，擅长xxxx教学 现在xxx机构教学 </span>
-          </div>
-        </li>
-        <li class="tea-li">
-          <a href="#">
-            <img
-              src="https://lht-100.oss-cn-beijing.aliyuncs.com/my_school/picture/head_portrait/87878859_p4.jpg"
-              alt="头像"
-            />
-          </a>
-          <p class="tea-nam"><a href="#">教师xxx</a></p>
-          <p class="tea-line"></p>
-          <div class="tea-msg">
-            <p>教师级别：高级教师</p>
-            <span> 教师介绍：是xxx学院教师，擅长xxxx教学 现在xxx机构教学 </span>
+            <p>教师级别：{{ teacher.career }}</p>
+            <span> 教师介绍：{{ teacher.intro }} </span>
           </div>
         </li>
       </ul>
@@ -67,9 +33,25 @@
 
 
 <script>
+import banner from "api/banner";
 export default {
   name: "showTeacher",
-  components: {},
+  data() {
+    return {
+      teacherList: [],
+    };
+  },
+  created() {
+    this.getShowSubject();
+  },
+  methods: {
+    getShowSubject() {
+      banner.getIndexList().then((response) => {
+        this.teacherList = response.data.data.tList;
+        console.log(this.teacherList);
+      });
+    },
+  },
 };
 </script>
 
@@ -111,27 +93,35 @@ export default {
           color: rgb(77, 160, 255);
         }
       }
-      .tea-msg{
+      .tea-msg {
         margin-top: 5px;
         padding-left: 5px;
-        p{
+        p {
           font-size: 12px;
           margin-bottom: 5px;
         }
-        span{
+        span {
           font-size: 12px;
         }
       }
     }
-    .tea-li:hover{
-        animation: 0.5s subanm forwards;
+    .tea-li:hover {
+      animation: 0.5s subanm forwards;
+    }
+    @keyframes subanm {
+      0% {
+        box-shadow: 1px 1px 2px rgb(102, 101, 101);
       }
-      @keyframes subanm {
-        0%{box-shadow: 1px 1px 2px rgb(102, 101, 101);}
-        25%{box-shadow: 2px 2px 4px rgb(102, 101, 101);}
-        50%{box-shadow: 3px 3px 6px rgb(102, 101, 101);}
-        100%{box-shadow: 4px 4px 8px rgb(102, 101, 101);}
+      25% {
+        box-shadow: 2px 2px 4px rgb(102, 101, 101);
       }
+      50% {
+        box-shadow: 3px 3px 6px rgb(102, 101, 101);
+      }
+      100% {
+        box-shadow: 4px 4px 8px rgb(102, 101, 101);
+      }
+    }
   }
 }
 </style>

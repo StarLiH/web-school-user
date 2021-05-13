@@ -14,7 +14,7 @@
             class="avatar-uploader"
             action="http://localhost:9001/xiyueoss/fileoss"
             :show-file-list="false"
-            :on-success="handleAvatarSuccess()"
+            :on-success="handleAvatarSuccess"
           >
             <i class="el-icon-plus avatar-uploader-icon"></i>
           </el-upload>
@@ -37,7 +37,7 @@
         </label>
       </div>
       <div class="msg-next">
-        <el-button type="primary">保存</el-button>
+        <el-button type="primary" @click="saveMyInfo()">保存</el-button>
       </div>
     </el-form>
   </div>
@@ -46,6 +46,9 @@
 
 <script>
 import cookie from "js-cookie";
+import user from "api/user";
+import login from "api/login";
+import { ElMessage } from "element-plus";
 export default {
   name: "stumsg",
   data() {
@@ -62,6 +65,7 @@ export default {
         { label: "男", id: 0 },
         { label: "女", id: 1 },
       ],
+      loginInfo:''
     };
   },
   created() {
@@ -69,18 +73,33 @@ export default {
     this.studentMsg();
   },
   methods: {
-    //初始显示教师信息
+    //初始显示学生信息
     studentMsg() {
       let showstudent = cookie.get("user_info");
-  
+
       this.student = JSON.parse(showstudent);
 
-      this.radValue=this.student.sex
-      //console.log(this.teacher.headportrait)
+      this.radValue = this.student.sex;
+      //console.log(this.student);
     },
-    handleAvatarSuccess(response) {
-      //上传之后
-      //this.student.avatar = response.data.url;
+    handleAvatarSuccess(res, file) {
+      //上传成功
+      this.student.headportrait = res.data.url;
+    },
+    saveMyInfo() {
+      this.student.sex = this.radValue
+      user.updateStudent(this.student).then((response) => {
+        login.studentInfo().then((response) => {
+          this.loginInfo = response.data.data.studentsInfo;
+          //获取返回的用户信息，放入cookie
+          cookie.set("user_info", this.loginInfo, { domain: "localhost" });
+          //身份判断放入cook
+          ElMessage.success({
+            message: "修改成功",
+            type: "success",
+          });
+        });
+      });
     },
   },
 };

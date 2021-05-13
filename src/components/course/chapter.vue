@@ -202,6 +202,7 @@ export default {
       this.video.title = "";
       this.video.sort = 0;
       this.video.videoSourceId = "";
+      this.fileList = [];
     },
     //添加
     addVideo() {
