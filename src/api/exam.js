@@ -2,39 +2,55 @@ import request from '@/utils/request'
 
 export default {
   //添加试题
-  addExam(exam){
+  addTeacherExam(exam){
     return request ({
-      url: '/xiyueservice/exam/addExam',
+      url: '/xiyueservice/teacherExam/addTeacherExam',
       method: 'post',
       data:exam
     })
   },
-  //学生查询试题
-  getStudentExam(studentId){
+  //教师查询资源
+  getMyExam(teacherId){
     return request ({
-      url: '/xiyueservice/exam/getStudentExam/'+studentId,
+      url: '/xiyueservice/teacherExam/getMyExam/'+teacherId,
       method: 'get',
     })
   },
-  //教师查询试题
-  getTeacherExam(teacherId){
+  //教师查询提交
+  getSubmitExam(teacherId){
     return request ({
-      url: '/xiyueservice/exam/getTeacherExam/'+teacherId,
+      url: '/xiyueservice/teacherExam/getSubmitExam/'+teacherId,
       method: 'get',
+    })
+  },
+  //返回试题
+  addSubmitExam(exam){
+    return request ({
+      url: '/xiyueservice/teacherExam/addSubmitExam',
+      method: 'post',
+      data:exam
     })
   },
   //提交试题
-  submitMyExam(id){
+  submitMyExam(exam){
     return request ({
-      url: '/xiyueservice/exam/submitMyExam/'+id,
-      method: 'get',
+      url: '/xiyueservice/studentExam/submitMyExam',
+      method: 'post',
+      data:exam
     })
   },
-  //评阅试题
-  readMyExam(id){
+  //查询提交
+  getMySubmit(studentId){
     return request ({
-      url: '/xiyueservice/exam/readMyExam/'+id,
+      url: '/xiyueservice/studentExam/getMySubmit/'+studentId,
       method: 'get'
+    })
+  },
+  //删除资源
+  removeMySubmit(id){
+    return request ({
+      url: '/xiyueservice/teacherExam/deleteMyExam/'+id,
+      method: 'delete'
     })
   },
 }

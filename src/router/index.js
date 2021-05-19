@@ -192,11 +192,6 @@ const routes = [
         component: () => import('components/teacherNav/exam')
       },
       {
-        path: '/teachercenter/read',
-        name: 'read',
-        component: () => import('components/teacherNav/read')
-      },
-      {
         path: '/teachercenter/collect',
         name: 'collect',
         component: () => import('components/teacherNav/collect')

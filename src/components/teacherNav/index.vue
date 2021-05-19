@@ -18,9 +18,6 @@
       <li class="tea-li" @click="change('e')" :id="'e'">
         <router-link to="/teachercenter/exam">试题发布</router-link>
       </li>
-      <li class="tea-li" @click="change('f')" :id="'f'">
-        <router-link to="/teachercenter/read">试题评阅</router-link>
-      </li>
       <li class="tea-li" @click="change('g')" :id="'g'">
         <router-link to="/teachercenter/collect">我的收藏</router-link>
       </li>
